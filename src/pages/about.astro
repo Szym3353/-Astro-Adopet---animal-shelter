@@ -1,0 +1,79 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+
+interface paragraphValue{
+    title: string,
+    text: string,
+    svgName: string,
+}
+
+let contentElements:paragraphValue[] = [
+    {title: 'Our Mission', text: 'At Adopet, our mission is to rescue and provide a safe haven for animals who have been abandoned, abused or neglected. We strive to provide these animals with the love, care and attention they deserve. We believe that every animal deserves a loving home and we work tirelessly to match our furry friends with their perfect forever families. Our goal is to not only save lives but to also educate the community on the importance of animal welfare and responsible pet ownership.', svgName: 'goal'},
+    {title: 'Our Team', text: 'Our team at Adopet is made up of compassionate individuals who are dedicated to the well-being of animals. From our experienced veterinarians and animal care staff to our dedicated volunteers, everyone at Adopet is committed to providing the best possible care for our furry residents. We work together as a team to ensure that every animal receives the love, attention and medical care they need to thrive.', svgName: 'team'},
+    {title: 'Our Impact', text: 'At Adopet, we measure our success by the number of animals we are able to save and the number of families we are able to match with their perfect pets. Over the years, we have been able to rescue and find loving homes for hundreds of animals, changing their lives for the better. We are proud of the positive impact we have made in our community and will continue to work tirelessly to save the lives of as many animals as possible.', svgName: 'impact' }
+]
+
+---
+
+<Layout title="About">
+    <div class="about">
+        <Header text="About Us" />
+        <div class="about__content py-7">
+            {contentElements.map((element,index) => (
+                <div class="about__element w-full flex justify-between bg-white mb-5 p-10 items-start">
+                    <div class="about__text__container max-w-full md:max-w-[50%]">
+                        <div class="flex mb-16 items-center">
+                            <img src={`./svg/svg_${element.svgName}.svg`} class="about__svg" />    
+                            <h1 class="about__text__header text-4xl font-medium">{element.title}</h1>
+                        </div>
+                         <p class="about__text__paragraph text-xl  mb-4 indent-9 pl-2">{element.text}</p>
+                    </div>
+                    <img src={`./rsz_about${index+1}.avif`} alt={`About us - "${element.title}" img.`} class="about__image max-w-[40%] hidden md:block" />
+                </div>
+            ))}
+        </div>
+    </div>
+</Layout>
+
+<style>
+    
+
+    .about__text__header{
+        background-image: var(--gradient);
+        color: transparent;
+        background-clip: text;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.12);
+        width: fit-content;
+    }
+
+    .about__paragraph__container{
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.24);
+    }
+    
+    .about__image{
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.24);
+    }
+
+    .about__element{
+        box-shadow: 0px 0px 4px rgba(0,0,0,0.34);
+    }
+
+    .about__element:nth-child(2n+1){
+        flex-direction: row-reverse;
+    }
+
+    .about__text__paragraph{
+        line-height: 40px;
+    }
+
+    .about__svg{
+        width: 100px;
+        height: 100px;
+    }
+
+</style>

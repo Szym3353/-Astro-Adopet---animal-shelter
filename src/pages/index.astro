@@ -1,0 +1,212 @@
+---
+import SinglePet from '../components/SinglePet/SinglePet';
+import Layout from '../layouts/Layout.astro';
+import pets from '../pets';
+
+let homepagePets = pets.slice(0, 12) 
+---
+
+<Layout title="Homepage">
+	<div class="homepage">
+		<div class="homepage__top relative">
+			<div class="homepage__top__text absolute top-[30%] left-[50%] opacity-0 w-full lg:w-1/2 text-center">
+				<h1 class="top-text__header gradient-underline text-white text-4xl lg:text-6xl font-medium pb-3">Adopt a pet and make<br/> a friend for life</h1>
+				<p class="top-text__subheader text-stone-200 text-xl pt-5">Discover your new best friend and create memories that will last a lifetime</p>
+			</div>
+			<svg class="homepage__top__svg absolute bottom-0" id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 160" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(243, 244, 245, 1)" offset="0%"></stop><stop stop-color="rgba(243, 244, 245, 1)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,48L34.3,45.3C68.6,43,137,37,206,29.3C274.3,21,343,11,411,21.3C480,32,549,64,617,69.3C685.7,75,754,53,823,48C891.4,43,960,53,1029,50.7C1097.1,48,1166,32,1234,24C1302.9,16,1371,16,1440,21.3C1508.6,27,1577,37,1646,53.3C1714.3,69,1783,91,1851,88C1920,85,1989,59,2057,64C2125.7,69,2194,107,2263,114.7C2331.4,123,2400,101,2469,93.3C2537.1,85,2606,91,2674,101.3C2742.9,112,2811,128,2880,128C2948.6,128,3017,112,3086,88C3154.3,64,3223,32,3291,29.3C3360,27,3429,53,3497,77.3C3565.7,101,3634,123,3703,130.7C3771.4,139,3840,133,3909,122.7C3977.1,112,4046,96,4114,77.3C4182.9,59,4251,37,4320,48C4388.6,59,4457,101,4526,98.7C4594.3,96,4663,48,4731,34.7C4800,21,4869,43,4903,53.3L4937.1,64L4937.1,160L4902.9,160C4868.6,160,4800,160,4731,160C4662.9,160,4594,160,4526,160C4457.1,160,4389,160,4320,160C4251.4,160,4183,160,4114,160C4045.7,160,3977,160,3909,160C3840,160,3771,160,3703,160C3634.3,160,3566,160,3497,160C3428.6,160,3360,160,3291,160C3222.9,160,3154,160,3086,160C3017.1,160,2949,160,2880,160C2811.4,160,2743,160,2674,160C2605.7,160,2537,160,2469,160C2400,160,2331,160,2263,160C2194.3,160,2126,160,2057,160C1988.6,160,1920,160,1851,160C1782.9,160,1714,160,1646,160C1577.1,160,1509,160,1440,160C1371.4,160,1303,160,1234,160C1165.7,160,1097,160,1029,160C960,160,891,160,823,160C754.3,160,686,160,617,160C548.6,160,480,160,411,160C342.9,160,274,160,206,160C137.1,160,69,160,34,160L0,160Z"></path></svg>
+		</div>
+		<div class="homepage__about text-center pb-16 shadow">
+			<h1 class="homepage__about__header opacity-0 gradient-underline pb-3 text-2xl lg:text-3xl font-medium pt-5 lg:pt-0">Together, Let's Make a Difference<br/> in the Lives of Animals</h1>
+			<p class="homepage__about__text opacity-0 text-xl lg:mx-40 px-5 pt-5">Our shelter is more than just a place for animals to stay - it's a community of animal lovers who are dedicated to making a difference in the lives of animals in need. We believe that every animal deserves a chance at a happy life, and we work tirelessly to provide them with the care and support they need to thrive.</p>
+		</div>
+		<div class="homepage__pet-slider relative">
+			<div class="homepage__pet__slider-nav flex absolute">
+				<button aria-label="Pets display slider navigation left." class="homepage__pets__slider-button slider-button--left" id="sliderLeftButton"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+				  </svg>
+				   prev</button>
+				<button aria-label="Pets display slider navigation right." class="homepage__pets__slider-button slider-button--right" id="sliderRightButton">next <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+				  </svg>
+				  </button>
+			</div>
+			<div class="homepage__pets">
+			 {homepagePets.map((pet) => <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] bg-white"><SinglePet  name={pet.name} age={pet.age} src={pet.src} gender={pet.gender} slider={true} /></div>)}
+			</div>
+			
+		</div>
+		<div class="homepage__adoption min-h-[550px] relative overflow-hidden p-10 pt-20 text-stone-800">
+			<svg class="homepage__adoption__svg hidden lg:block" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+				<path fill="#6985C0" d="M56.5,-28.9C70,-9.4,75.3,18.6,64.6,41C53.8,63.3,26.9,80.1,0.2,80C-26.6,79.9,-53.1,62.9,-66.9,38.8C-80.8,14.7,-81.9,-16.6,-68.6,-36.1C-55.4,-55.5,-27.7,-63.1,-3.1,-61.3C21.5,-59.6,43.1,-48.4,56.5,-28.9Z" transform="translate(100 100)" />
+			  </svg>
+			  <img src="./pngwing.com.avif" alt="Adoption photo." class="homepage__adoption__photo  hidden lg:block">
+			  <div class="homepage__adoption__text opacity-0 text-center sm:text-left">
+				<h1 class="homepage__adoption__header text-4xl font-medium "><span class="text-orange-500">Adoption process </span>in our shelter:</h1>
+				<ol class="homepage__adoption__links mt-10 text-xl w-fit">
+					<li class="homepage__adoption__link">Learn about our adoption process</li>
+					<li class="homepage__adoption__link">Find out what's involved in adopting a pet from our shelter</li>
+					<li class="homepage__adoption__link">How to apply for adoption and what to expect</li>
+					<li class="homepage__adoption__link">Meet our pets and start the adoption process today</li>
+					<li class="homepage__adoption__link">See our list of adoption requirements and make sure you're ready to adopt</li>
+				</ol>
+				<div class="homepage__adoption__bottom" />
+			</div>
+		</div>
+		<div class="homepage__volunteering lg:grid lg:grid-cols-2 lg:gap-5 p-16">
+			<div class="homepage__volunteering__box col-auto flex justify-center items-center">
+				<p class="homepage__volunteering__text">Are you passionate about animals and want to make a difference in their lives? Our shelter is always in need of volunteers who can help us provide care and support to our furry friends.</p>
+			</div>
+			<div class="homepage__volunteering__box col-auto my-5 lg:my-0 flex justify-center items-center">
+				<p class="homepage__volunteering__text">As a volunteer, you can help with tasks such as feeding, walking, cleaning, and socializing with our animals. We also have opportunities to help with events, fundraising, and administrative tasks.</p>
+			</div>
+			<div class="homepage__volunteering__box col-span-2 flex justify-center items-center">
+				<p class="homepage__volunteering__text text-xl ">
+					If you're interested in volunteering, please fill out our volunteer application form or contact us at <br/>123-123-1234<br/>adopet@email.com<br/> for more information. Together, we can make a difference in the lives of animals in need.
+				</p>
+
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<script src="../js/indexAnimationObserver.js" />
+
+<script>
+	let sliderLeftButton = document.querySelector('#sliderLeftButton') as HTMLElement
+	let sliderRightButton = document.querySelector('#sliderRightButton')  as HTMLElement
+	let slider = document.querySelector('.homepage__pets') as HTMLElement
+
+	let blockSliderButtons = false
+	let blockMs = 700
+
+	
+	sliderLeftButton.addEventListener('click', (e) => {
+		if(blockSliderButtons) return
+		slider.scrollBy({
+			top: 0,
+			left: -document.body.clientWidth,
+			behavior: "smooth"
+		})
+		blockSliderButtons = true
+		setTimeout(() => {blockSliderButtons = false}, blockMs)
+	})
+	sliderRightButton.addEventListener('click', (e) => {
+		if(blockSliderButtons) return
+		slider.scrollBy({
+			top: 0,
+			left: document.body.clientWidth,
+			behavior: 'smooth'
+		})
+		blockSliderButtons = true
+		setTimeout(() => {blockSliderButtons = false}, blockMs)
+	})
+
+</script>
+
+<style>
+
+	
+	.homepage__top{
+		height: calc(100vh - 74px);
+		background: url('/rsz_homepageimg.avif') no-repeat fixed;
+		background-size: cover;
+		background-color: rgba(13, 25, 65, 0.7);
+		background-blend-mode: multiply;
+	}
+
+	.homepage__top__text{
+		transform: translateX(-50%);
+	}
+	
+	.homepage__about{
+		background-color: var(--white);
+	}
+
+	.homepage__adoption__svg{
+		width: 800px;
+		position: absolute;
+		right: -300px;
+		top: -200px;
+		z-index: -2;
+	}
+	
+	.homepage__adoption__photo{
+		position: absolute;
+		bottom: 0;
+		width: 500px;
+		right: 70px;
+		z-index: -1;
+	}
+	
+	.homepage__adoption__link{
+		text-shadow: 0px 0px 2px white;
+		padding: 5px;
+		margin-bottom: 10px;
+		transition: 0.2s;
+	}
+	
+	.homepage__adoption__link:hover{
+		padding-left: 10px;
+		color: rgb(var(--teal));
+		cursor: pointer;
+	}
+
+	.homepage__volunteering{
+		min-height: 600px;
+		background: url('/rsz_vol2.avif');
+		background-size: cover;
+		background-position: center;
+		box-shadow: 0px 0px 5px rgba(0,0,0,0.34);
+	}
+
+	.homepage__volunteering__box{
+		background-color: rgba(255,255,255,0.85);
+		box-shadow: 1px 1px 5px rgba(0,0,0,0.34);
+		border-radius: 5px;
+		padding: 10px 20px;
+		text-align: center;
+	}
+
+	.homepage__pet-slider{
+		box-shadow: 1px 1px 4px rgba(0,0,0,0.34);
+	}
+
+	.homepage__pet__slider-nav{
+		z-index: 100;
+		left: 0;
+		top: 0;
+		opacity: 0.4;
+		transition: 0.3s;
+	}
+
+	.homepage__pet__slider-nav:hover{
+		opacity: 1;
+	}
+
+	.homepage__pets__slider-button{
+		padding: 10px 20px;
+		border: 1px solid rgba(0,0,0,0.34);
+		box-shadow: 1px 1px 4px rgba(0,0,0,0.34);
+		background: rgba(0,0,0,0.54);
+		color: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+
+
+	
+	.homepage__pets{
+		display: flex;
+		overflow: scroll;
+		overflow-y: hidden;
+		overflow-x:hidden;
+	}
+
+
+	
+
+
+</style>

@@ -1,0 +1,60 @@
+---
+    const {value, drawer, url} = Astro.props
+---
+<a href={url}>
+	<button aria-label={`Navigation menu link to ${value}`} class={`${drawer ? 'drawer__option':'navbar__option'}`}>{value}</button>
+</a>
+
+<style>
+
+.navbar__option{
+		padding: 3px 20px;
+		margin: 0 5px;
+		position: relative;
+		transition: 0.25s;
+	}
+
+	.navbar__option:hover{
+		color: rgb(var(--red));
+	}
+
+	.navbar__option::before{
+		content: '';
+		width: 0%;
+		transition: 0.25s;
+		height: 2px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background-color: rgb(var(--red));
+	}
+
+	.navbar__option:hover::before{
+		width: 100%;
+	}
+
+	.drawer__option{
+		width: 100%;
+		padding: 10px;
+		position: relative;
+		z-index: 10;
+		font-size: 20px;
+	}
+
+	.drawer__option::before{
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 0;
+		left: 0;
+		top: 0;
+		background-color: #eee;
+		transition: 0.3s ease-in;
+		z-index: -1;
+	}
+
+	.drawer__option:hover::before{
+		width: 100%;
+	}
+
+</style>

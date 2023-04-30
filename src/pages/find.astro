@@ -1,0 +1,75 @@
+---
+import FindPet from "../components/FindPet";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+
+
+---
+
+<Layout title="Find Pet">
+    <div class="find-pet">
+        <Header text="Find your perfect pet" />
+        <FindPet client:visible />
+    </div>
+</Layout>
+
+<style is:global>
+
+    .find-pet__type{
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.34);
+        border-radius: 5px;
+        transition: 0.25s;
+    }
+
+    .find-pet__type__content{
+        border: 3px solid rgb(var(--teal));
+    }
+
+    .find-pet__type__image{
+        right: 0;
+    }
+
+    .find-pet__type__text{
+        position: relative;
+    }
+
+    .find-pet__type__text::after{
+        content: '';
+        position: absolute;
+        height: 50px;
+        width: 100px;
+        border: solid rgb(var(--teal));
+        border-width: 1px 0 0 1px;
+        left: 0;
+        top: 0;
+        transition: 0.3s;
+    }
+
+    .find-pet__type:hover{
+        transform: scale(1.01);
+        cursor: pointer;
+    }
+    
+    .find-pet__type:hover .find-pet__type__text::after{
+        width: 150px;
+        height: 70px;
+    }
+
+    .find-pet__pagination__button{
+        border: 1px solid rgba(0,0,0,0.1);
+        border-width: 1px 1px 0px 0px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .find-pet__pagination__button:hover{
+        opacity: 0.8;
+    }
+
+    .find-pet__results{
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+
+
+</style>

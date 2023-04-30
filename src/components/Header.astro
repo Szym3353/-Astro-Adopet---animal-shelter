@@ -1,0 +1,19 @@
+---
+    const {text} = Astro.props
+---
+
+<div class="header text-white flex items-center justify-center shadow-md">
+    <h3 class="header__text text-4xl font-medium">{text}</h3>
+</div>
+
+<style>
+    .header{
+        background: url('/headerbg.avif') fixed no-repeat;
+        background-color: rgba(var(--orange), 1);
+        background-blend-mode: multiply;
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.44);
+    }
+</style>

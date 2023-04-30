@@ -1,0 +1,47 @@
+.single-pet__name {
+  background-image: var(--gradient);
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.14);
+}
+
+.single-pet {
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  position: relative;
+  height: 100%;
+}
+
+.single-pet__more {
+  border: 1px solid rgb(var(--teal));
+  border-radius: 4px;
+  color: rgb(var(--teal));
+  position: relative;
+  overflow: hidden;
+}
+
+.single-pet__more::after {
+  content: "More";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(var(--teal));
+  color: #fff;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.single-pet__more:hover::after {
+  top: 0;
+}
+
+.single-pet__image {
+  border-radius: 25px;
+  padding: 15px;
+  width: auto;
+  object-fit: cover;
+}
