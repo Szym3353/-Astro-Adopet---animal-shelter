@@ -24,12 +24,12 @@ let contentElements:paragraphValue[] = [
                 <div class="about__element w-full flex justify-between bg-white mb-5 p-10 items-start">
                     <div class="about__text__container max-w-full md:max-w-[50%]">
                         <div class="flex mb-16 items-center">
-                            <img src={`./svg/svg_${element.svgName}.svg`} class="about__svg" />    
+                            <img src={`/svg/svg_${element.svgName}.svg`} class="about__svg" />    
                             <h1 class="about__text__header text-4xl font-medium">{element.title}</h1>
                         </div>
                          <p class="about__text__paragraph text-xl  mb-4 indent-9 pl-2">{element.text}</p>
                     </div>
-                    <img src={`./rsz_about${index+1}.avif`} alt={`About us - "${element.title}" img.`} class="about__image max-w-[40%] hidden md:block" />
+                    <img src={`/rsz_about${index+1}.avif`} alt={`About us - "${element.title}" img.`} class="about__image max-w-[40%] hidden md:block" />
                 </div>
             ))}
         </div>
